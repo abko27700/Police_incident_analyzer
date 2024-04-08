@@ -2,7 +2,6 @@ import csv
 from datetime import datetime
 import requests
 from geopy.geocoders import Nominatim
-from weather_helper import get_weather_code
 from dateutil import parser
 from geopy.distance import geodesic
 import dbOperations
