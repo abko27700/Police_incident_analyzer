@@ -35,8 +35,8 @@ def get_location(location_str):
         return latitude, longitude
     else:
         try:
-            logger.log_message("Sleeping for 1 second")  
-            time.sleep(1.1)
+            # logger.log_message("Sleeping for 1 second")  
+            # time.sleep(1.1)
             geolocator = Nominatim(user_agent="augmentor_1")
             location = geolocator.geocode(location_str)
             logger.log_message("GEOCODER: fetched new coordinates for " + location_str)
