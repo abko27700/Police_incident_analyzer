@@ -3,11 +3,8 @@ import csv
 import os
 import re
 import shutil
-# import requests
-# from pypdf import PdfReader
 import sqlite3
 import requests
-# from dbOperations import createDb, insertIntoDb,get_nature_rankings,get_location_rankings,destroy_db
 import dbOperations
 from augmentFunctions import augment_data
 from pypdf import PdfReader
@@ -18,7 +15,7 @@ def read_csv(file_path):
     with open(file_path, newline='') as csvfile:
         reader = csv.reader(csvfile)
         for row in reader:
-            urls.append(row[0])  # Assuming URLs are in the first column
+            urls.append(row[0])
     return urls
 
 def extract_date_from_url(url):
@@ -82,27 +79,8 @@ def processPdfs(file_path):
     shutil.rmtree(destination_folder)
 
 def clear_log_file(log_file_path='logs.txt'):
-    """Clears the contents of the log file."""
     with open(log_file_path, 'w') as file:
-        pass  # Opening in 'w' mode clears the file
-
-
-    
-    
-def get_day_of_week(date_str):
-    date_obj = datetime.strptime(date_str, "%Y-%m-%d")
-    return date_obj.weekday()
-
-def get_time_of_day(time_str):
-    hour = int(time_str.split(':')[0])
-    if 6 <= hour < 12:
-        return 1  # Morning
-    elif 12 <= hour < 18:
-        return 2  # Afternoon
-    elif 18 <= hour < 24:
-        return 3  # Evening
-    else:
-        return 4  # Night
+        pass 
 
 def main():
     parser = argparse.ArgumentParser(description='Process a CSV file containing PDF URLs.')

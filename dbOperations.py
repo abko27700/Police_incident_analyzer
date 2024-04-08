@@ -117,16 +117,12 @@ def assign_location_rankings(sorted_locations):
 def get_nature_rankings():
     sorted_natures = get_nature_frequencies()
     nature_rankings = assign_nature_rankings(sorted_natures)
-    # for nature, rank in nature_rankings.items():
-    #     logger.log_message(f"{nature}: {rank}")
     return nature_rankings
 
 
 def get_location_rankings():
     sorted_locations = get_location_frequencies()
     location_rankings = assign_location_rankings(sorted_locations)
-    # for location, rank in location_rankings.items():
-    #     logger.log_message(f"{location}: {rank}")
     return location_rankings
 
 
@@ -155,18 +151,6 @@ def create_coordinates_db():
         conn.commit()
         conn.close()
        
-# def insert_coordinates(name, latitude, longitude):
-#     # Connect to SQLite database
-#     conn = sqlite3.connect('resources/coordinates.db')
-#     c = conn.cursor()
-
-#     # Insert data into the locations table
-#     c.execute('''INSERT INTO coordinates (name, latitude, longitude)
-#                 VALUES (?, ?, ?)''', (name, latitude, longitude))
-
-#     # Commit changes and close connection
-#     conn.commit()
-#     conn.close()
 
 def check_coordinates_in_db(location_str):
     db_path = 'resources/coordinates.db'
@@ -201,16 +185,6 @@ def insert_coordinates_to_db(name, latitude, longitude):
     conn.close()
 
 def fetch_incident_window(current_incident_id, window_size=3):
-    """
-    Fetch a window of incidents around the current incident, based on incident ID.
-    
-    Parameters:
-    - current_incident_id: The ID of the current incident.
-    - window_size: How many incidents to consider before and after the current incident.
-    
-    Returns:
-    - A list of incidents within the window.
-    """
     connection = sqlite3.connect("resources/normanpd.db")
     cursor = connection.cursor()
 
