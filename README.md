@@ -126,3 +126,4 @@ Extracts the hour from a time string in "HH:MM" format. Returns the hour.
 
 ### `augment_data()`
 Augments incident data by fetching additional information such as day of the week, time of day, weather, location rank, side of town, incident rank, and EMSSTAT status. Writes the augmented data to a CSV file named 'augmented_incidents.csv' and also prints it to the console..
+
