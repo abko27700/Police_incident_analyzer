@@ -95,7 +95,7 @@ Fetches a window of incidents centered around the specified incident ID from the
 ## augmentFunctions.py Function Descriptions
 
 ### `get_location(location_str: str) -> Tuple[Optional[float], Optional[float]]`
-Attempts to retrieve the latitude and longitude coordinates for a given location string. If the coordinates are found in the database, they are returned. Otherwise, the geocoding service (Nominatim) is used to fetch the coordinates. If the geocoding service fails, Google Maps is used as a fallback. Returns a tuple of latitude and longitude.
+Attempts to retrieve the latitude and longitude coordinates for a given location string. If the coordinates are found in the catched database, they are returned. Otherwise, the geocoding service (Nominatim) is used to fetch the coordinates. If the geocoding service fails, Google Maps is used as a fallback. Returns a tuple of latitude and longitude.
 
 ### `get_location_using_google_maps(location_str: str, api_key: str) -> Tuple[Optional[float], Optional[float]]`
 Uses the Google Maps API to fetch the latitude and longitude coordinates for a given location string. Returns a tuple of latitude and longitude.
@@ -127,3 +127,11 @@ Extracts the hour from a time string in "HH:MM" format. Returns the hour.
 ### `augment_data()`
 Augments incident data by fetching additional information such as day of the week, time of day, weather, location rank, side of town, incident rank, and EMSSTAT status. Writes the augmented data to a CSV file named 'augmented_incidents.csv' and also prints it to the console..
 
+
+
+## Bugs and Assumptions:
+Default Location Assumption: The code defaults to Norman, Oklahoma, when it encounters an empty location string or fails to retrieve coordinates for a given location. This assumes that incidents without specified locations or with invalid locations should be attributed to Norman, which may not always be accurate.
+
+Geocoding Service Reliability: The code relies on external geocoding services (Nominatim and Google Maps) to fetch coordinates for location strings. It assumes that these services are always available and accurate. However, there may be cases where the services are temporarily unavailable or return incorrect results, leading to inaccurate coordinates.
+
+Weather Data Availability: The code fetches weather codes for specific locations, dates, and hours using an external API (Open Meteo Archive). It assumes that weather data for the specified parameters is always available and accurate. However, if the API fails to provide weather data or returns incorrect information, it may affect the accuracy of the augmented incident data. 
