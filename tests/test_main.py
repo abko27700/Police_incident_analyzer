@@ -1,6 +1,6 @@
 # run_tests.py
 
-# import pytest
+import pytest
 import os
 import sys
 
@@ -12,9 +12,9 @@ import dbOperations
 import augmentFunctions
 def test_read_csv():
     expected_urls = [
-        "https://www.normanok.gov/sites/default/files/documents/2024-02/2024-02-01_daily_incident_summary.pdf",
-        "https://www.normanok.gov/sites/default/files/documents/2024-02/2024-02-03_daily_incident_summary.pdf",
-        "https://www.normanok.gov/sites/default/files/documents/2024-02/2024-02-06_daily_incident_summary.pdf"
+        "https://www.normanok.gov/sites/default/files/documents/2024-03/2024-03-01_daily_incident_summary.pdf",
+        "https://www.normanok.gov/sites/default/files/documents/2024-03/2024-03-02_daily_incident_summary.pdf",
+        "https://www.normanok.gov/sites/default/files/documents/2024-03/2024-03-03_daily_incident_summary.pdf"
        ]
     assert augmentor.read_csv('testCsv.csv') == expected_urls
 
